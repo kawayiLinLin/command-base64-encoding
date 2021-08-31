@@ -8,11 +8,12 @@
     "command-base64-encoding": "./bin/command-base64-encoding.js"
   },
   "scripts": {
-    "pub": "npm publish --registry=https://registry.npmjs.org"
+    "pub": "npm publish --registry=https://registry.npmjs.org",
+    "login": "npm login --registry=https://registry.npmjs.org"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["encoding", "decoding", "base64", "command"],
+  "author": "kawayilinlin",
+  "license": "MIT",
   "dependencies": {
     "commander": "^8.1.0",
     "mime": "^2.5.2"

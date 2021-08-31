@@ -1,4 +1,5 @@
 const { isFunction, resolvePath } = require("../utils")
+const fs = require("fs").promises
 
 async function inputHandler(encodingInput) {
   try {

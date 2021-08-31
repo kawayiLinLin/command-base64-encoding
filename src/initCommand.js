@@ -16,7 +16,7 @@ function initCommand() {}
 
 function initOptions() {
   program
-    .command("e")
+    .command("encode")
     .option(
       "-t, --type [encoding or decoding type]",
       "in what encoding or decoding type",
@@ -31,10 +31,10 @@ function initOptions() {
       '-w --with-mimetype',
       'add data URL scheme'
     ).action((options) => {
-      initCommandHandlers(options, 'e')
+      initCommandHandlers(options, 'encode')
     })
   program
-    .command("d")
+    .command("decode")
     .option(
       "-t, --type [encoding or decoding type]",
       "in what encoding or decoding type",
@@ -46,7 +46,7 @@ function initOptions() {
       "encoding output file path or 'console'",
       "console"
     ).action((options) => {
-      initCommandHandlers(options, 'd')
+      initCommandHandlers(options, 'decode')
     })
 
   program.parse()
@@ -59,9 +59,9 @@ function optionsHandler(options) {
 }
 
 async function initCommandHandlers(options, command) {
-  if (command === 'e')
+  if (command === 'encode')
     createEncoding(options.type, options.input, options.output, options.withMimetype)
-  else if (command === 'd')
+  else if (command === 'decode')
     createDecoding(options.type, options.input, options.output)
 }
 

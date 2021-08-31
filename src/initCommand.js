@@ -27,6 +27,9 @@ function initOptions() {
       "-o --output <encoding output>",
       "encoding output file path or 'console'",
       "console"
+    ).option(
+      '-w --with-mimetype',
+      'add data URL scheme'
     ).action((options) => {
       initCommandHandlers(options, 'e')
     })
@@ -57,7 +60,7 @@ function optionsHandler(options) {
 
 async function initCommandHandlers(options, command) {
   if (command === 'e')
-    createEncoding(options.type, options.input, options.output)
+    createEncoding(options.type, options.input, options.output, options.withMimetype)
   else if (command === 'd')
     createDecoding(options.type, options.input, options.output)
 }

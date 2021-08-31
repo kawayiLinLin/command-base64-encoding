@@ -1,6 +1,8 @@
-const { Command } = require("commander");
-const createEncoding = require('./createEncoding')
-const fs = require('fs').promises
+const { Command } = require("commander")
+const createEncoding = require("./createEncoding")
+const createDecoding = require('./createDecoding')
+const { isString, isBoolean } = require("../utils")
+const fs = require("fs").promises
 
 const program = new Command()
 
@@ -10,21 +12,58 @@ function initVersion() {
   program.version(packageJSON.version)
 }
 
+function initCommand() {}
+
 function initOptions() {
   program
-    .option("-e, --encode <encoding type>", "in what encoding type", 'base64')
+    .command("e")
+    .option(
+      "-t, --type [encoding or decoding type]",
+      "in what encoding or decoding type",
+      "base64",
+    )
     .option("-i --input <encoding input>", "encoding input file path or text")
-    .option('-o --output <encoding output>', "encoding output file path or 'console'", "console")
-    .parse()
+    .option(
+      "-o --output <encoding output>",
+      "encoding output file path or 'console'",
+      "console"
+    ).action((options) => {
+      initCommandHandlers(options, 'e')
+    })
+  program
+    .command("d")
+    .option(
+      "-t, --type [encoding or decoding type]",
+      "in what encoding or decoding type",
+      "base64"
+    )
+    .option("-i --input <encoding input>", "encoding input file path or text")
+    .option(
+      "-o --output <encoding output>",
+      "encoding output file path or 'console'",
+      "console"
+    ).action((options) => {
+      initCommandHandlers(options, 'd')
+    })
+
+  program.parse()
 }
 
-async function initCommandHandlers() {
-    const options = program.opts()
-    createEncoding(options.encode, options.input, options.output)
+function optionsHandler(options) {
+  if (isBoolean(options.encode)) {
+    options
+  }
+}
+
+async function initCommandHandlers(options, command) {
+  if (command === 'e')
+    createEncoding(options.type, options.input, options.output)
+  else if (command === 'd')
+    createDecoding(options.type, options.input, options.output)
 }
 
 module.exports = {
   initVersion,
   initOptions,
   initCommandHandlers,
-};
+}

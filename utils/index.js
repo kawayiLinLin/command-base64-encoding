@@ -9,6 +9,10 @@ function isString(val) {
     return typeof val === 'string'
 }
 
+function isBoolean(val) {
+    return typeof val === 'boolean'
+}
+
 function resolvePath(inputPath) {
     return path.resolve(process.cwd(), inputPath)
 }
@@ -26,5 +30,6 @@ module.exports = {
     isFunction,
     resolvePath,
     isString,
+    isBoolean,
     createCharIndexMap
 }

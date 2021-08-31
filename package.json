@@ -8,7 +8,7 @@
     "command-base64-encoding": "./bin/command-base64-encoding.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pub": "npm publish --registry=https://registry.npmjs.org"
   },
   "keywords": [],
   "author": "",

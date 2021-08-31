@@ -18,8 +18,8 @@ function initOptions() {
   program
     .command("encode")
     .option(
-      "-t, --type [encoding or decoding type]",
-      "in what encoding or decoding type",
+      "-t, --type [encoding type]",
+      "in what encoding type",
       "base64",
     )
     .option("-i --input <encoding input>", "encoding input file path or text")
@@ -36,14 +36,14 @@ function initOptions() {
   program
     .command("decode")
     .option(
-      "-t, --type [encoding or decoding type]",
-      "in what encoding or decoding type",
+      "-t, --type [decoding type]",
+      "in what decoding type",
       "base64"
     )
-    .option("-i --input <encoding input>", "encoding input file path or text")
+    .option("-i --input <decoding input>", "decoding input file path or text")
     .option(
-      "-o --output <encoding output>",
-      "encoding output file path or 'console'",
+      "-o --output <decoding output>",
+      "decoding output file path or 'console'",
       "console"
     ).action((options) => {
       initCommandHandlers(options, 'decode')

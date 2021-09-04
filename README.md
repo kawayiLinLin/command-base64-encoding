@@ -27,7 +27,7 @@ cbe encode -i ./test.png -w -o ./test.txt
 
 参数
 
-+ `-t`、`--type` 编码类型，默认值 `base64`，当前版本仅支持 `base64`
++ `-t`、`--type` 编码类型，默认值 `base64`
 + `-i`、`--input` 要被编码的字符或文件路径，为可以访问的文件路径时，会读取文件内容输出编码
 + `-o`、`--output` 编码结果的输出方式，默认值为 `console`，为默认值时，会直接在控制台打印，否则创建对应路径的文件，在文件中保存输出信息
 + `-w`、`--with-mimetype` 当 `-t` 参数为 `base64` 时，输出增加前缀（Data URL Schema）

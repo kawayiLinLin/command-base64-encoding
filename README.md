@@ -42,17 +42,20 @@ command-base64-encoding decode -i "6L+Z5piv5rWL6K+VYmFzZTY06L2s5o2i"
 # 输出 这是测试base64转换
 ```
 
-+ `-t`、`--type` 解码类型，默认值 `base64`，当前版本仅支持 `base64`，暂不支持有前缀的 `base64` 解码
-+ `-i`、`--input` 要被编码的字符或文件路径，为可以访问的文件路径时，会读取文件内容输出解码结果
++ `-t`、`--type` 解码类型，默认值 `base64`，暂不支持有前缀的 `base64` 解码
++ `-i`、`--input` 要被解码的字符或文件路径，为可以访问的文件路径时，会读取文件内容输出解码结果
 + `-o`、`--output` 解码结果的输出方式，默认值为 `console`，为默认值时，会直接在控制台打印，否则创建对应路径的文件，在文件中保存输出信息
 
-## type 参数取值
 
-### base64
+## 其他
 
-### base16
++ cbe encode list
 
-### base32
+获取可编码列表，当前版本支持 base64、base32、base16
+
++ cbe decode list
+
+获取可解码列表，当前版本支持 base64、base32、base16
 
 ### 获取帮助
 
@@ -61,3 +64,13 @@ cbe --version # 查看工具版本
 cbe --help # 获取帮助
 cbe encode --help # 获取某个命令的帮助
 ```
+
+
+## type 参数取值
+
+### base64
+
+### base16
+
+
+### base32

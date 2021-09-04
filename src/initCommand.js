@@ -17,7 +17,7 @@ function initOptions(program) {
   commands.forEach(command => {
     const registeredCommand = program.command(command.commandName)
 
-    const { commandOptions } = command
+    const { commandOptions, childrenCommand } = command
 
     commandOptions.forEach(option => {
       const args = []
@@ -50,6 +50,14 @@ function initOptions(program) {
       }
       commandHandler[command.originCommandName](options)
     })
+
+    if (Array.isArray(childrenCommand) && childrenCommand.length > 0) {
+      childrenCommand.forEach(childCommand => {
+        registeredCommand.command(childCommand.commandName).action(options => {
+          commandHandler[`${command.originCommandName}-${childCommand.originCommandName}`](options)
+        })
+      })
+    }
   })
 
   program.parse()

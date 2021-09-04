@@ -25,7 +25,7 @@ async function initEncoding(options) {
     let mimeTypeShowed =
       withMimetype && mimeType
         ? `data:${mimeType};base64,`
-        : (console.warn("warning: only file needs the '--with-mimetype' option"), "")
+        : (/*console.warn("warning: only file needs the '--with-mimetype' option")*/void 0, "")
 
     if (mimeTypeShowed && encodingType !== "base64") {
       console.warn("warning: only base64 needs the '--with-mimetype' option")

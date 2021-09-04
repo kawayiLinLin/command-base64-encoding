@@ -3,6 +3,12 @@
         {
             "commandName": "encode",
             "originCommandName": "encode",
+            "childrenCommand": [
+                {
+                    "commandName": "list",
+                    "originCommandName": "list"
+                }
+            ],
             "commandOptions": [
                 {
                     "shortName": "t",
@@ -41,6 +47,12 @@
         {
             "commandName": "decode",
             "originCommandName": "decode",
+            "childrenCommand": [
+                {
+                    "commandName": "list",
+                    "originCommandName": "list"
+                }
+            ],
             "commandOptions": [
                 {
                     "shortName": "t",
@@ -72,18 +84,18 @@
     "encodingTypes": [
         {
             "name": "base64",
-            "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-        },
-        {
-            "name": "base128"
+            "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
+            "allow": ["encode", "decode"]
         },
         {
             "name": "base32",
-            "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"
+            "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567",
+            "allow": ["encode", "decode"]
         },
         {
             "name": "base16",
-            "chars": "0123456789ABCDEF"
+            "chars": "0123456789ABCDEF",
+            "allow": ["encode", "decode"]
         }
     ] 
 }

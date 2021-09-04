@@ -1,0 +1,89 @@
+{
+    "commands": [
+        {
+            "commandName": "encode",
+            "originCommandName": "encode",
+            "commandOptions": [
+                {
+                    "shortName": "t",
+                    "fullName": "type",
+                    "optional": false,
+                    "paramsName": "encoding type",
+                    "description": "in what encoding type",
+                    "defaultValue": "base64"
+                },
+                {
+                    "shortName": "i",
+                    "fullName": "input",
+                    "optional": true,
+                    "paramsName": "encoding input",
+                    "description": "encoding input file path or text",
+                    "defaultValue": null
+                },
+                {
+                    "shortName": "o",
+                    "fullName": "output",
+                    "optional": true,
+                    "paramsName": "encoding output",
+                    "description": "encoding output file path or 'console'",
+                    "defaultValue": "console"
+                },
+                {
+                    "shortName": "w",
+                    "fullName": "with-mimetype",
+                    "optional": true,
+                    "paramsName": null,
+                    "description": "add data URL scheme",
+                    "defaultValue": null
+                }
+            ]
+        },
+        {
+            "commandName": "decode",
+            "originCommandName": "decode",
+            "commandOptions": [
+                {
+                    "shortName": "t",
+                    "fullName": "type",
+                    "optional": false,
+                    "paramsName": "decoding type",
+                    "description": "in what decoding type",
+                    "defaultValue": "base64"
+                },
+                {
+                    "shortName": "i",
+                    "fullName": "input",
+                    "optional": true,
+                    "paramsName": "decoding input",
+                    "description": "decoding input file path or text",
+                    "defaultValue": null
+                },
+                {
+                    "shortName": "o",
+                    "fullName": "output",
+                    "optional": true,
+                    "paramsName": "decoding output",
+                    "description": "decoding output file path or 'console'",
+                    "defaultValue": "console"
+                }
+            ]
+        }
+    ],
+    "encodingTypes": [
+        {
+            "name": "base64",
+            "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+        },
+        {
+            "name": "base128"
+        },
+        {
+            "name": "base32",
+            "chars": "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"
+        },
+        {
+            "name": "base16",
+            "chars": "0123456789ABCDEF"
+        }
+    ] 
+}

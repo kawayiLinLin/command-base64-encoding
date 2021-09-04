@@ -1,72 +1,62 @@
-const { Command } = require("commander")
-const createEncoding = require("./createEncoding")
-const createDecoding = require('./createDecoding')
-const { isString, isBoolean } = require("../utils")
-const fs = require("fs").promises
+const commandHandler = require('./command')
+const configHandler = require('../config')
 
-const program = new Command()
+const config = configHandler.getConfig()
+
 
 const packageJSON = require("../package.json")
 
-function initVersion() {
+function initVersion(program) {
   program.version(packageJSON.version)
+  return module.exports
 }
 
-function initCommand() {}
+function initOptions(program) {
+  const { commands } = config
 
-function initOptions() {
-  program
-    .command("encode")
-    .option(
-      "-t, --type [encoding type]",
-      "in what encoding type",
-      "base64",
-    )
-    .option("-i --input <encoding input>", "encoding input file path or text")
-    .option(
-      "-o --output <encoding output>",
-      "encoding output file path or 'console'",
-      "console"
-    ).option(
-      '-w --with-mimetype',
-      'add data URL scheme'
-    ).action((options) => {
-      initCommandHandlers(options, 'encode')
+  commands.forEach(command => {
+    const registeredCommand = program.command(command.commandName)
+
+    const { commandOptions } = command
+
+    commandOptions.forEach(option => {
+      const args = []
+      const optionName = []
+      if (option.shortName) {
+        optionName.push(`-${option.shortName},`)
+      }
+      if (option.fullName) {
+        optionName.push(`--${option.fullName}`)
+      }
+      if (option.paramsName) {
+        const isOptionalTag = option.optional ? ['<', '>'] : ['[', ']']
+        optionName.push(`${isOptionalTag[0]}${option.paramsName}${isOptionalTag[1]}`)
+      }
+      if (optionName.length) {
+        args.push(optionName.join(' '))
+      }
+      if (option.description) {
+        args.push(option.description)
+      }
+      if (option.defaultValue) {
+        args.push(option.defaultValue)
+      }
+      registeredCommand.option(...args)
     })
-  program
-    .command("decode")
-    .option(
-      "-t, --type [decoding type]",
-      "in what decoding type",
-      "base64"
-    )
-    .option("-i --input <decoding input>", "decoding input file path or text")
-    .option(
-      "-o --output <decoding output>",
-      "decoding output file path or 'console'",
-      "console"
-    ).action((options) => {
-      initCommandHandlers(options, 'decode')
+
+    registeredCommand.action(options => {
+      if (!command.originCommandName in commandHandler) {
+        throw Error('no such command: ' + command.commandName)
+      }
+      commandHandler[command.originCommandName](options)
     })
+  })
 
   program.parse()
-}
-
-function optionsHandler(options) {
-  if (isBoolean(options.encode)) {
-    options
-  }
-}
-
-async function initCommandHandlers(options, command) {
-  if (command === 'encode')
-    createEncoding(options.type, options.input, options.output, options.withMimetype)
-  else if (command === 'decode')
-    createDecoding(options.type, options.input, options.output)
+  return module.exports
 }
 
 module.exports = {
   initVersion,
   initOptions,
-  initCommandHandlers,
 }

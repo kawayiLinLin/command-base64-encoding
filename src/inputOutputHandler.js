@@ -2,7 +2,7 @@ const { isFunction, resolvePath } = require("../utils")
 const fs = require("fs").promises
 
 
-async function inputHandler(encodingInput, withMimetype) {
+async function inputHandler(encodingInput) {
   try {
     const result = await fs.readFile(resolvePath(encodingInput))
     return result

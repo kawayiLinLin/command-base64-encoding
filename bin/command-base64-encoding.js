@@ -1,8 +1,6 @@
 #! /usr/bin/env node
-const command = require('../src/initCommand')
+const { Command } = require("commander")
+const program = new Command()
+const command = require("../src/initCommand")
 
-command.initVersion()
-
-command.initOptions()
-
-command.initCommandHandlers()
+command.initVersion(program).initOptions(program)

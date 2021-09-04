@@ -46,6 +46,14 @@ command-base64-encoding decode -i "6L+Z5piv5rWL6K+VYmFzZTY06L2s5o2i"
 + `-i`、`--input` 要被编码的字符或文件路径，为可以访问的文件路径时，会读取文件内容输出解码结果
 + `-o`、`--output` 解码结果的输出方式，默认值为 `console`，为默认值时，会直接在控制台打印，否则创建对应路径的文件，在文件中保存输出信息
 
+## type 参数取值
+
+### base64
+
+### base16
+
+### base32
+
 ### 获取帮助
 
 ```shell

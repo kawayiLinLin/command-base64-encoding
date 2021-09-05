@@ -9,7 +9,8 @@
   },
   "scripts": {
     "pub": "npm publish --registry=https://registry.npmjs.org",
-    "login": "npm login --registry=https://registry.npmjs.org"
+    "login": "npm login --registry=https://registry.npmjs.org",
+    "postpublish": "git push origin master & git push github master"
   },
   "keywords": [
     "encoding",

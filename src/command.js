@@ -1,3 +1,4 @@
+const mime = require("mime")
 
 const createEncoding = require("./createEncoding")
 const createDecoding = require('./createDecoding')
@@ -11,5 +12,8 @@ module.exports = {
     },
     'decode-list': () => {
         console.log(config.getDecodingList())
+    },
+    'decode-mime-type-list': () => {
+        console.log(mime._extensions)
     }
 }

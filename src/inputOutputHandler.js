@@ -1,4 +1,4 @@
-const { isFunction, resolvePath } = require("../utils")
+const { resolvePath } = require("../utils")
 const fs = require("fs").promises
 
 
@@ -13,7 +13,8 @@ async function inputHandler(encodingInput) {
 
 async function outputHandler(encodingOutput, data) {
   if (encodingOutput === "console") {
-    console.log(data)
+    process.stdout.write(data)
+    process.stdout.write('\n')
   } else {
     await fs.writeFile(resolvePath(encodingOutput), data)
   }

@@ -7,6 +7,13 @@ const encodingMap = new Map(
     config.encodingTypes.map(type => [type.name, () => require(`../lib/${type.name}`)])
 )
 
+const getEncodingOrDecodingList = (encodingOrDecoding, type = "string") => {
+    const result = config.encodingTypes.filter(type => type.allow.includes(encodingOrDecoding)).map(type => type.name)
+
+    if (type === "string") return result.join('\n')
+    return result
+}
+
 module.exports = {
     getConfig() {
         return config
@@ -22,10 +29,10 @@ module.exports = {
         if (!encodingType) throw new Error('error: no such ' + type)
         return encodingType.chars
     },
-    getEncodingList() {
-        return config.encodingTypes.filter(type => type.allow.includes("encode")).map(type => type.name).join('\n')
+    getEncodingList(type = "string") {
+        return getEncodingOrDecodingList("encode", type)
     },
-    getDecodingList() {
-        return config.encodingTypes.filter(type => type.allow.includes("decode")).map(type => type.name).join('\n')
+    getDecodingList(type = "string") {
+        return getEncodingOrDecodingList("decode", type)
     }
 }

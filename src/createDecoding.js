@@ -1,14 +1,11 @@
-const { isFunction, resolvePath } = require("../utils")
+const { isFunction } = require("../utils")
 const { inputHandler, outputHandler } = require('./inputOutputHandler')
-const fs = require("fs").promises
 
 const decodingMap = require('../config').getEncodingMap()
 
 /**
  *
- * @param {*} decodingType 编码方式
- * @param {*} decodingInput 编码输入
- * @param {*} decodingOutput 编码输出
+ * @param {*} options 解码参数
  */
 async function initDecoding(options) {
   const { type: decodingType, input: decodingInput, output: decodingOutput } = options
@@ -16,9 +13,10 @@ async function initDecoding(options) {
 
   if (decodingRequire && isFunction(decodingRequire)) {
     const { decode } = decodingRequire()
-    const result = decode(await inputHandler(decodingInput))
+    const result = decode(await inputHandler(decodingInput), options)
 
     outputHandler(decodingOutput, result)
+    
     return
   }
   throw new Error(`error dncoding type: ${decodingType}`)

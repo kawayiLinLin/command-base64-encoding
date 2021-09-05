@@ -51,6 +51,10 @@
                 {
                     "commandName": "list",
                     "originCommandName": "list"
+                },
+                {
+                    "commandName": "mime-type-list",
+                    "originCommandName": "mime-type-list"
                 }
             ],
             "commandOptions": [

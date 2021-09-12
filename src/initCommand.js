@@ -51,6 +51,8 @@ function initOptions(program) {
       commandHandler[command.originCommandName](options)
     })
 
+    registeredCommand.usage("[options]")
+
     if (Array.isArray(childrenCommand) && childrenCommand.length > 0) {
       childrenCommand.forEach(childCommand => {
         registeredCommand.command(childCommand.commandName).action(options => {
@@ -60,6 +62,8 @@ function initOptions(program) {
     }
   })
 
+  program.name(packageJSON.name)
+  program.usage("[command] [options]")
   program.parse()
   return module.exports
 }

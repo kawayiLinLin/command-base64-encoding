@@ -25,6 +25,11 @@ function resolvePath(inputPath) {
     return path.resolve(process.cwd(), inputPath)
 }
 
+/**
+ * 创建字符与10进制数的映射表
+ * @param {string} str 
+ * @returns {Map} 
+ */
 function createCharIndexMap(str) {
     const map = new Map()
     if (!isString(str)) return map

@@ -1,6 +1,6 @@
 {
   "name": "command-base64-encoding",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A node based command line coding tool",
   "main": "index.js",
   "bin": {

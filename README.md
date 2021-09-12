@@ -5,7 +5,7 @@ A node based command line coding tool
 ## 安装
 
 ```shell
-$ npm install command-base64-encoding -g
+$ npm install command-encoding -g
 ```
 
 ## 基本用法
@@ -16,7 +16,7 @@ $ npm install command-base64-encoding -g
 
 ```shell
 $ cbe encode -i "这是被编码的字符串"
-$ command-base64-encoding encode -i "这是被编码的字符串"
+$ command-encoding encode -i "这是被编码的字符串"
 ```
 
 ```shell
@@ -38,7 +38,7 @@ $ cbe encode -i ./test.png -w -o ./test.txt
 
 ```shell
 $ cbe decode -i "6L+Z5piv5rWL6K+VYmFzZTY06L2s5o2i"
-$ command-base64-encoding decode -i "6L+Z5piv5rWL6K+VYmFzZTY06L2s5o2i"
+$ command-encoding decode -i "6L+Z5piv5rWL6K+VYmFzZTY06L2s5o2i"
 # 输出 这是测试base64转换
 ```
 
@@ -55,18 +55,18 @@ $ command-base64-encoding decode -i "6L+Z5piv5rWL6K+VYmFzZTY06L2s5o2i"
 - 安装
 
 ```shell
-$ npm install command-base64-encoding -s
+$ npm install command-encoding -s
 ```
 
 - 代码示例
 
 ```js
-const commandBase64Encoding = require("command-base64-encoding");
+const commandEncoding = require("command-encoding");
 
-commandBase64Encoding.base64.encoding("这是测试编码"); // return: 6L+Z5piv5rWL6K+V57yW56CB
-commandBase64Encoding.base64.decoding("6L+Z5piv5rWL6K+V57yW56CB"); // return: Buffer<xxxx>
+commandEncoding.base64.encoding("这是测试编码"); // return: 6L+Z5piv5rWL6K+V57yW56CB
+commandEncoding.base64.decoding("6L+Z5piv5rWL6K+V57yW56CB"); // return: Buffer<xxxx>
 
-commandBase64Encoding.base32.encoding("这是测试编码"); // return: 5C7ZTZUYV7TLLC7IV6K6PPEW46QIC
+commandEncoding.base32.encoding("这是测试编码"); // return: 5C7ZTZUYV7TLLC7IV6K6PPEW46QIC
 ```
 
 ### 其他

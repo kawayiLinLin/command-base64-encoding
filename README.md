@@ -2,6 +2,10 @@
 
 A node based command line coding tool
 
+## deprecated
+
+The package is deprecated, please move to [https://www.npmjs.com/package/command-encoding](https://www.npmjs.com/package/command-encoding)
+
 ## 安装
 
 ```shell

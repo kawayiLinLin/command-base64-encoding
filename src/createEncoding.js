@@ -11,7 +11,7 @@ async function initEncoding(options) {
   const { type: encodingType, input: encodingInput, output: encodingOutput } = options
   const encodingRequire = encodingMap.get(encodingType)
 
-  if (encodingRequire && isFunction(encodingRequire)) {
+  if (isFunction(encodingRequire)) {
     const { encode } = encodingRequire()
 
     const result = encode(await inputHandler(encodingInput), options)

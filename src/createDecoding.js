@@ -11,7 +11,7 @@ async function initDecoding(options) {
   const { type: decodingType, input: decodingInput, output: decodingOutput } = options
   const decodingRequire = decodingMap.get(decodingType)
 
-  if (decodingRequire && isFunction(decodingRequire)) {
+  if (isFunction(decodingRequire)) {
     const { decode } = decodingRequire()
     const result = decode(await inputHandler(decodingInput), options)
 
@@ -19,7 +19,7 @@ async function initDecoding(options) {
     
     return
   }
-  throw new Error(`error dncoding type: ${decodingType}`)
+  throw new Error(`error decoding type: ${decodingType}`)
 }
 
 module.exports = initDecoding

@@ -1,16 +1,16 @@
 {
-  "name": "command-base64-encoding",
-  "version": "1.0.7-0",
+  "name": "command-encoding",
+  "version": "1.1.2",
   "description": "A node based command line coding tool",
   "main": "index.js",
   "bin": {
-    "cbe": "./bin/command-base64-encoding.js",
-    "command-base64-encoding": "./bin/command-base64-encoding.js"
+    "ce": "./bin/command-encoding.js",
+    "command-encoding": "./bin/command-encoding.js"
   },
   "scripts": {
     "pub": "npm publish --registry=https://registry.npmjs.org",
     "login": "npm login --registry=https://registry.npmjs.org",
-    "postpublish": "git push origin master & git push github master"
+    "postpublish": "git push origin master & git push github master & git push github --tag & git push origin --tag"
   },
   "keywords": [
     "encoding",

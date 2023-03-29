@@ -14,8 +14,8 @@ module.exports = {
     console.log(config.getDecodingList())
   },
   "decode-mime-type-list": async () => {
-    console.log('输入打印全部，则打印全部的mime-type')
-    console.log('输入搜索，则进入搜索，搜索模式不输入直接回车则结束')
+    console.log('【Tip】输入打印全部，则打印全部的mime-type')
+    console.log('【Tip】输入搜索，则进入搜索，搜索模式不输入直接回车则结束')
 
     const readline = require("readline")
 
@@ -35,7 +35,7 @@ module.exports = {
 
     const ask = (q) => new Promise((r) => rl.question(q, r)) 
 
-    const type = await ask('请输入“打印全部”或“搜索”')
+    const type = await ask('请输入“打印全部”或“搜索”：\n')
     if (!type) return rl.close()
     if (type === '打印全部' || type === 'print-all') {
         console.log(mime._extensions)
@@ -43,7 +43,7 @@ module.exports = {
     }
     if (type === '搜索' || type === 'search') {
         while (true) {
-            const keyword = await ask('请输入搜索关键词')
+            const keyword = await ask('请输入搜索关键词：\n')
             if (!keyword) return rl.close()
             const result = {}
             mimeTypeKeys.forEach(key => {
@@ -56,6 +56,7 @@ module.exports = {
                     result[value] = extensionsReverse[value]
                 }
             })
+            console.log(result)
         }
 
     }

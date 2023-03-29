@@ -56,6 +56,7 @@ module.exports = {
                     result[value] = extensionsReverse[value]
                 }
             })
+            rl.close()
             console.log(result)
         }
 
